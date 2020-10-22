@@ -58,7 +58,12 @@ def get_safe_file_name(file_name: str) -> str:
     return re.sub(r'[<,>,/,\\,|,:,",\',.,*,?]', '-', file_name)
 
 
-def md5(data):
+def md5(data: str) -> str:
+    """
+    生成一个md5值
+    :param data:
+    :return:
+    """
     return hashlib.md5(bytes(data, encoding='utf-8')).hexdigest()
 
 
