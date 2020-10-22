@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import hashlib
 import os
 import re
 
@@ -55,6 +56,10 @@ def get_safe_file_name(file_name: str) -> str:
     :return:
     """
     return re.sub(r'[<,>,/,\\,|,:,",\',.,*,?]', '-', file_name)
+
+
+def md5(data):
+    return hashlib.md5(bytes(data, encoding='utf-8')).hexdigest()
 
 
 def main():
