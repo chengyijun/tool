@@ -14,6 +14,9 @@ class A:
     """
     name = 'abel'
 
+    def say_hello(self):
+        print('say hello')
+
     class Meta:
         model = 'User'
 
