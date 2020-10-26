@@ -12,6 +12,9 @@ from typing import Any
 众所周知，对象是类实例化出来的
 Python中万物皆对象，那么，类是什么实例化出来的呢？
 答案就是超类实例化出类
+
+超类的应用：
+超类中可以拿到并操作"子类"属性  这在继承中是难以实现的 这是超类的意义所在
 """
 
 
@@ -28,7 +31,8 @@ class A(type):
         __new__() 方法产生 对象之后 会交给__init__() 进行初始化工作
         """
         print('拿到__new__()方法产生的对象，开始初始化了，A.__init__()', self)
-        print(self.PI)
+        print(self.PI)  # 超类拿到"子类"属性进行操作  这在继承中难以实现  这也是超类的实际应用方式
+        self.PI += 1
         super().__init__(*args, **kwargs)
 
     def __call__(self, *args: Any, **kwds: Any) -> Any:
@@ -53,6 +57,7 @@ class B(metaclass=A):
 
 def main():
     b = B('abel')
+    print(B.PI)
 
 
 if __name__ == '__main__':
