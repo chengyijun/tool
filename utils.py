@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 import hashlib
+import logging
 import os
 import re
 
@@ -65,6 +66,19 @@ def md5(data: str) -> str:
     :return:
     """
     return hashlib.md5(bytes(data, encoding='utf-8')).hexdigest()
+
+
+def write_log(info: str, log_file: str = './log.txt'):
+    """
+    写日志到文件中
+    :param info: 要写的内容
+    :param log_file: 日志文件路径 默认为当前路径下的 log.txt
+    :return:
+    """
+    log_format = "%(asctime)s - %(levelname)s - %(message)s"
+    date_format = "%Y-%m-%d %H:%M:%S %p"
+    logging.basicConfig(filename=log_file, level=logging.DEBUG, format=log_format, datefmt=date_format)
+    logging.info(info)
 
 
 def main():
