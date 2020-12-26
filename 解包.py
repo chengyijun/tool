@@ -18,6 +18,19 @@ def main():
     print(e)
     print(f)
 
+    # 快速生成一个字典
+    dict1 = dict(zip('abcd', range(4)))
+    dict2 = dict(zip('ef', range(2)))
+    print(dict1)
+    print(dict2)
+    dict1.update(dict2)
+    print(dict1)
+
+    dict3 = dict(dict1, **dict2)
+    dict4 = {**dict1, **dict2}
+    print(dict3)
+    print(dict4)
+
 
 if __name__ == '__main__':
     main()
