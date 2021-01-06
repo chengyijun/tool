@@ -35,7 +35,8 @@ class Demo(QWidget):
         self.animation.setKeyValueAt(0.4, self.btn.pos() + QPoint(0, 0))
         self.animation.setKeyValueAt(0.6, self.btn.pos() + QPoint(0, -15))
         self.animation.setKeyValueAt(0.8, self.btn.pos() + QPoint(0, 0))
-        # self.animation.setKeyValueAt(1, self.btn.pos() + QPoint(0, 0))  
+        # self.animation.setKeyValueAt(1, self.btn.pos() + QPoint(0, 0))
+        # 设置动画循环次数
         self.animation.setLoopCount(3)
 
         QMetaObject.connectSlotsByName(self)
