@@ -89,6 +89,14 @@ class A:
         """
         print('__call__')
 
+    def __setitem__(self, key, value):
+        print('__setitem__')
+        self.key = value
+
+    def __getitem__(self, item):
+        print('__getitem__')
+        return item
+
 
 def main():
     a = A()
@@ -100,6 +108,8 @@ def main():
     print(a.__dict__)
     print(a)
     a()
+    a['key'] = 'sss'
+    print(a['key'])
 
 
 if __name__ == '__main__':
