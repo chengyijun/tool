@@ -9,7 +9,8 @@
 import sys
 import typing
 
-from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QTableWidget, QPushButton, QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QWidget, QApplication, QVBoxLayout, QTableWidget, QPushButton, QTableWidgetItem, \
+    QHeaderView, QGroupBox, QHBoxLayout
 
 
 class Demo(QWidget):
@@ -31,6 +32,16 @@ class Demo(QWidget):
         self.table.setItem(0, 0, QTableWidgetItem('你好'))
         # 添加按钮
         self.table.setCellWidget(1, 1, QPushButton('添加'))
+        # 添加按钮组
+        self.gbox = QGroupBox()
+        self.btn1 = QPushButton('btn1')
+        self.btn2 = QPushButton('btn2')
+        self.hlayout = QHBoxLayout()
+        self.hlayout.addWidget(self.btn1)
+        self.hlayout.addWidget(self.btn2)
+        self.gbox.setLayout(self.hlayout)
+        self.btn1.setStyleSheet('QPushButton{background-color:red}')
+        self.table.setCellWidget(0, 1, self.gbox)
 
 
 def main():
