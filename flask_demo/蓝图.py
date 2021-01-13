@@ -9,11 +9,6 @@
 from flask import Blueprint, Flask
 from flask_restful import Api, Resource
 
-# 创建蓝图
-_api = Blueprint('api', __name__)
-
-api = Api(_api)
-
 
 class LoginView(Resource):
     def get(self):
@@ -21,15 +16,17 @@ class LoginView(Resource):
         return {'msg': 'login success'}
 
 
-# 设置url
-api.add_resource(LoginView, '/login', endpoint="login")
-
-# 注册蓝图
-app = Flask(__name__)
-app.register_blueprint(_api, url_prefix='/api')
-
-
 def main():
+    # 创建蓝图
+    _api = Blueprint('api', __name__)
+
+    api = Api(_api)
+    # 设置路由
+    api.add_resource(LoginView, '/login', endpoint="login")
+
+    # 注册蓝图
+    app = Flask(__name__)
+    app.register_blueprint(_api, url_prefix='/api')
     app.run(debug=True)
 
 
