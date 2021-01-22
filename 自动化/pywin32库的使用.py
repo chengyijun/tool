@@ -22,7 +22,7 @@ def main():
     # 窗口置顶
     win32gui.SetForegroundWindow(win_handle)
 
-    for _ in range(5):
+    for _ in range(1):
         add_appointment()
 
 
@@ -31,13 +31,13 @@ def add_appointment():
     click_action(310, 1010)
     # 输入姓名
     patient_name = f'test-患者{str(int(time.time()))}'
-    type_action(543, 190, patient_name)
+    type_action(543, 150, patient_name)
     # 输入电话1
     patient_telno1 = str(random.randint(1370000000000, 1379000000000))
-    type_action(543, 240, patient_telno1)
+    type_action(543, 205, patient_telno1)
     # 输入电话2
     patient_telno2 = str(random.randint(1370000000000, 1379000000000))
-    type_action(543, 290, patient_telno2)
+    type_action(543, 255, patient_telno2)
     # 输入年龄
     patient_age = str(random.randint(10, 100))
     type_action(543, 340, f'{patient_age}')
@@ -98,9 +98,9 @@ def add_appointment():
     type_action(543, 734, f'{patient_name} 预约备注信息')
 
     # 选择 日期 日
-    click_action(1085, 277)
-    target_pos_y = random.randint(0, 277)
-    pyautogui.dragTo(1085, target_pos_y, duration=1.0)
+    # click_action(1085, 277)
+    # target_pos_y = random.randint(0, 277)
+    # pyautogui.dragTo(1085, target_pos_y, duration=1.0)
     # 选择日期 时
     click_action(831, 508)
     target_pos_y = random.randint(0, 508)
@@ -115,21 +115,21 @@ def add_appointment():
     pyautogui.dragTo(962, y, duration=1.0)
 
     # 选择看诊时长
-    click_action(856, 729)
+    click_action(856, 756)
     # 816 1106
     target_pos_x = random.randint(816, 1106)
-    pyautogui.dragTo(target_pos_x, 729, duration=1.0)
+    pyautogui.dragTo(target_pos_x, 756, duration=1.0)
     # 勾选项目
-    click_action(1222, 280, duration=0.3)
-    click_action(1222, 315, duration=0.3)
-    click_action(1222, 350, duration=0.3)
-    click_action(1222, 380, duration=0.3)
-    click_action(1222, 415, duration=0.3)
-    click_action(1222, 445, duration=0.3)
+    click_action(1222, 300, duration=0.3)
+    click_action(1222, 335, duration=0.3)
+    click_action(1222, 370, duration=0.3)
+    click_action(1222, 405, duration=0.3)
+    click_action(1222, 440, duration=0.3)
+    click_action(1222, 475, duration=0.3)
     # 截图
     # pyautogui.screenshot(f'{patient_name}.jpg')
     # 确定添加
-    click_action(982, 888)
+    click_action(960, 925)
 
 
 def click_action(x: int, y: int, duration: float = 0.5) -> None:

@@ -3,5 +3,5 @@ dist/
 .idea/
 __pycache__/
 *.spec
-test.py
+test*.py
 *.txt
