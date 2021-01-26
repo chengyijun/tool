@@ -5,3 +5,6 @@ __pycache__/
 *.spec
 test*.py
 *.txt
+
+tmp
+tmp2.json
