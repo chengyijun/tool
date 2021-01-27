@@ -25,6 +25,13 @@ def main():
     # 通过dict类的构造方法创建一个字典
     dict_2 = dict(name='abel', age=11, gender='M')
     print(dict_2)
+    # 字典合并
+    dict_5 = dict(list(zip('abcd', range(4))))
+    dict_6 = dict(list(zip('efgh', range(4, 8))))
+    dict_5.update(dict_6)
+    print(dict_5)
+    dict_7 = {**dict_5, **dict_6}
+    print(dict_7)
 
 
 if __name__ == '__main__':
