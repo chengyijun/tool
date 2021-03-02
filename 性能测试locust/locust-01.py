@@ -20,7 +20,7 @@ class WebsiteTasks(TaskSet):
 
     @task(1)
     def about(self):
-        self.client.get("/about/")
+        self.client.get("/about")
 
     # tasks = {index: 2, about: 1}  # 与装饰器效果一致
 
