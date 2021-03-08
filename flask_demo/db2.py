@@ -27,7 +27,7 @@ class Student(Base):
         # 普通联合索引
         # Index('ix_id_name','id', 'username')
     )
-    # relationship
+    # relationship 不影响数据库结构 只是联表查询的时候起作用
     belong_classes = relationship('Classes', backref='stus')
 
 
