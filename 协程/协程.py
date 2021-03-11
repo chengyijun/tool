@@ -20,22 +20,26 @@ start = time.time()
 
 
 async def test2(i):
-    r = await other_test(i)
-    print(i, r)
+    # await 之后相当于遇到一个 IO阻塞任务 比如此处的dowload() 发起网络请求
+    r = await download(i)
+    # print(i, r)
 
 
-async def other_test(i):
+async def download(i):
+    print(f'开始下载 url: {i}')
     r = requests.get(i)
-    print(i)
+    # 由于需要模拟IO耗时较多造成的明显阻塞效果 可以再加一个 asyncio.sleep(4) 增加4s耗时
     await asyncio.sleep(4)
-    print(time.time() - start)
+    print(f'url: {i}下载完毕，耗时：{time.time() - start}')
     return r
 
 
 def main():
     url = ["https://segmentfault.com/p/1210000013564725",
            "https://www.jianshu.com/p/83badc8028bd",
-           "https://www.baidu.com/"]
+           "https://www.baidu.com/",
+           "https://www.sogou.com/"
+           ]
 
     # 1. 创建一个事件循环
     loop = asyncio.get_event_loop()
