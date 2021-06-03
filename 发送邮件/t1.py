@@ -20,10 +20,10 @@ class SendEmail:
     """
     host = 'smtp.qq.com'  # 邮箱的接口
     port = '25'  # 端口
+    sender = 'cyjmmy@qq.com'  # 邮箱账号 也是发件人
     pwd = ''  # 授权码
 
-    def __init__(self, sender: str, receiver: str, subject: str, content: str, file: str) -> None:
-        self.sender = sender  # 发送方
+    def __init__(self, receiver: str, subject: str, content: str, file: str) -> None:
         self.receiver = receiver  # 接收方
         self.subject = subject  # 邮件主题
         self.content = content  # 邮件正文
@@ -47,7 +47,8 @@ class SendEmail:
         with open(self.file, 'rb') as f:
             SendImageFile = f.read()
         image = MIMEImage(SendImageFile)
-        image['Content-Disposition'] = 'attachment;filename="attach.jpg"'
+        # 用作邮件中附件显示的名称
+        image['Content-Disposition'] = f'attachment;filename="{self.file}"'
         msg.attach(image)
         return msg.as_string()
 
@@ -66,7 +67,7 @@ class SendEmail:
 
 
 def main():
-    SendEmail('cyjmmy@qq.com', 'cyjmmy@qq.com', 'joke', 'for tank', './kkx.jpg').send()
+    SendEmail('cyjmmy@qq.com', 'rox', 'jeff', 'kkx.jpg').send()
 
 
 if __name__ == '__main__':
