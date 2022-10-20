@@ -8,6 +8,7 @@ def task(x: int):
 
 
 def callback(obj):
+    # 由于回调函数都是主进程调用的  所以这里打开文件不用加锁 因为都是顺序执行的 没有并发
     with open("target.txt", "a") as f:
         f.write(str(obj.result()) + "\n")
     print("回调函数")
