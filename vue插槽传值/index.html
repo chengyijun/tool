@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <template id="cpn">
+        <div>
+
+            <h1>子组件</h1>
+            <slot :pl="languages" name="cc1">
+                <ul>
+                    <li v-for="language in languages">
+                        {{language}}
+                    </li>
+                </ul>
+            </slot>
+            <slot name="cc2">第二个插槽的默认内容</slot>
+        </div>
+    </template>
+    <div id="box">
+        {{name}}
+        <cpn>
+            <!-- v-slot 表示这个template是一个插槽 -->
+            <!-- 冒号后面是具名插槽的名字 -->
+            <!-- obj表示插槽往外传出的data对象(子组件的data，且只包含传出对象) -->
+            <!-- obj = { "pl": [ "python", "java", "js", "golang", "php" ] } -->
+            <template v-slot:cc1="obj">
+                {{ test(obj.pl) }}
+            </template>
+            <h3 slot="cc2">第二个插槽的填充内容</h3>
+        </cpn>
+    </div>
+    <script src="js/vue.js"></script>
+    <script>
+
+
+        const box = new Vue({
+            el: "#box",
+            components: {
+
+                cpn: {
+                    template: "#cpn",
+                    data() {
+                        return {
+                            name: "child",
+                            languages: ["python", "java", "js", "golang", "php"]
+                        }
+                    }
+
+
+                }
+            },
+            data: {
+                name: "main"
+            },
+            methods: {
+                test(objs) {
+                    return objs.join(" - ")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
