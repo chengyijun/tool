@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Webshell]
+@="URL:webshell Protocol Handler"
+"URL Protocol"=""
+[HKEY_CLASSES_ROOT\Webshell\DefaultIcon]
+@="D:\\main.exe"
+[HKEY_CLASSES_ROOT\Webshell\shell]
+[HKEY_CLASSES_ROOT\Webshell\shell\open]
+[HKEY_CLASSES_ROOT\Webshell\shell\open\command]
+@="\"D:\\main.exe\" \"%1\""

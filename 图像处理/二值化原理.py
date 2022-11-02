@@ -3,6 +3,7 @@ import numpy as np
 
 img = cv2.imread(r'C:\Users\Administrator\Desktop\white.jpg',
                  cv2.IMREAD_GRAYSCALE)  #灰度图像
+
 x, y = img.shape
 print(img.shape)
 
